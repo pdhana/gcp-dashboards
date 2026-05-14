@@ -4,6 +4,10 @@
 # .tfstate files
 *.tfstate
 *.tfstate.*
+*.tfstate.backup
+*.tfvars
+*.tfvars.json
+
 
 # Crash log files
 crash.log
@@ -42,3 +46,13 @@ terraform.rc
 # Optional: ignore plan files saved before destroying Terraform configuration
 # Uncomment the line below if you want to ignore planout files.
 # planout
+
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+
+# Script/Temporary files
+clean.bat
+test.tf
