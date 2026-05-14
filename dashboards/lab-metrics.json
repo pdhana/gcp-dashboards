@@ -1,0 +1,36 @@
+{
+  "displayName": "MIG Scaling Gap - v1",
+  "gridLayout": {
+    "columns": "2",
+    "widgets": [
+      {
+        "title": "Scaling Gap (Missing VMs)",
+        "timeSeriesTable": {
+          "dataSets": [
+            {
+              "timeSeriesQuery": {
+                "prometheusQuery": "max_over_time(count(compute_googleapis_com:instance_uptime{metadata_system_instance_group!=\"\"}) by (metadata_system_instance_group)[1m:10s])"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "title": "Gap Over Time",
+        "xyChart": {
+          "dataSets": [
+            {
+              "plotType": "STACKED_BAR",
+              "timeSeriesQuery": {
+                "prometheusQuery": "sum by (instance_group_name) (compute_googleapis_com:instance_group_size)"
+              }
+            }
+          ],
+          "yAxis": {
+            "label": "Number of VMs pending"
+          }
+        }
+      }
+    ]
+  }
+}
